@@ -1,0 +1,54 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Información sobre el producto</title>
+</head>
+<body>
+    <h2>Información sobre el producto</h2>
+    <form action="post.php" method="POST" enctype="multipart/form-data">
+        <fieldset>
+            <legend>Datos básicos</legend>
+            <p>
+                <label for="nombre">Nombre</label>
+            </p>
+            <input id="nombre" type="text" name="nombre" value="">
+            <p>
+                <label for="contrasena">Contraseña</label>
+            </p>
+            <input id="contrasena" type="password" name="contrasena" value="">
+            <p>
+                <label for="descripcion">Descripción</label>
+            </p>
+            <textarea id="descripcion" name="descripcion" rows="5" cols="40"></textarea>
+            <p>
+                <label for="foto">Foto</label>
+                <input id="foto" type="file" name="foto"></p>
+            <input id="contacto" type="checkbox" name="contacto" value="1">
+            <label for="contacto">Añadir contador de visitas</label>
+        </fieldset>
+        <fieldset>
+            <legend>Datos economicos</legend>
+            <p>
+                <label for="precio">Precio</label>
+                <input id="precio" type="text" name="precio" value="">
+                €
+                <label for="impuestos">Impuestos</label>
+                <select id="impuestos" name="impuestos" size="1">
+                    <option selected="selected" value="%4">%4</option>
+                    <option value="%2">%2</option>
+                </select>
+            </p>
+            Promoción
+            <p><input id="ninguno"type="radio" name="promocion" value="ninguno" checked="1">
+                <label for="ninguno">Ninguno</label></p>
+            <p><input id="transporte" type="radio" name="promocion" value="transporte">
+                <label for="transporte">Transporte gratuito</label></p>
+            <p><input id="descuento" type="radio" name="promocion" value="descuento">
+                <label for="descuento">Descuento 5%</label></p>
+        </fieldset>
+        <input type="submit" name="enviar" value="Enviar">
+        <input type="reset" value="Reset">
+    </form>
+
+</body>
+</html>
