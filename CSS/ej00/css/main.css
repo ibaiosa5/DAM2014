@@ -1,0 +1,66 @@
+*{
+    border: 1px solid #000;
+    box-sizing:border-box;
+}
+
+html,body{
+    background-color:#f7f7f7;
+}
+body{
+    font: 14pt/1.48em "Source Sans Pro", sans-serif;
+    color:#464646;
+}
+a{
+    color:#000;
+    text-decoration: none;
+}
+ul{
+    margin: 0;
+}
+table{
+    width: 100%;
+}
+h1,h2,h3,h4,h5,h6,
+.h1,.h2,.h3,.h4,.h5,.h6{
+    margin-top: 0;
+}
+h1, .h1{
+    font-size: 2em; /* 28pt media el h1 /14pt que media la fuente base=28/14=2em*/
+    line-height: 1.08em;/*30.24pt/28pt*/
+    text-transform: uppercase;/*mayusculas*/
+    font-weight: normal;/*sin negrita*/
+}
+/*Textos*/
+.bold{font-weight: bold;}
+.normal{font-weight: normal;}
+.small{font-size: 0.8em;}
+.big{font-size: 1.5em;}
+.uppercase{text-transform: uppercase;}
+.center{text-align: center;}
+.list{list-style: none; padding: 0;}
+/* Colores */
+.txt-red{
+    color:#F00;
+}
+.bg-white{
+    background-color:#FFF;
+}
+/*TO DO*/
+.list-blue{ padding-left: 22px; }
+/*layout*/
+.wrapper{
+    width: 990px;
+    margin: 0 auto;/*margen superior e inferior 0 y izquierdo y derecho automaticos*/
+    padding: 40px 0;
+
+}
+.col-25{width: 25%}
+.col-50{width: 50%}
+.col-75{width: 75%}
+.fleft{float: left;}/*flotar hacia la izquierda*/
+/* Cabecera*/
+/*Breadcrum en mayusculas*/
+.breadcrum{
+    text-transform: uppercase;
+}
+
