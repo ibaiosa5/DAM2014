@@ -1,5 +1,5 @@
 *{
-    border: 1px solid #000;
+    /*border: 1px solid #000;*/
     box-sizing:border-box;
 }
 
@@ -32,35 +32,126 @@ h1, .h1{
 }
 /*Textos*/
 .bold{font-weight: bold;}
+.italic{font-style: italic;}
+.uppercase{text-transform: uppercase;}
 .normal{font-weight: normal;}
 .small{font-size: 0.8em;}
 .big{font-size: 1.5em;}
-.uppercase{text-transform: uppercase;}
 .center{text-align: center;}
 .list{list-style: none; padding: 0;}
-/* Colores */
-.txt-red{
-    color:#F00;
+.list p{margin-top: 0;}
+.list li{padding: 20px 0;}
+.list li:first-child{padding-top: 0;}
+.list-blue li{
+    background: transparent url("../imagenes/blue.jpg") no repeat 0 10px;
+    padding-left: 20px;
 }
+
+.price{font-size: 1.5em;font-weight: bold;}
+
+/* Colores */
+.txt-red{color:#F00;}
+.txt-blue{color:#7cbcf3;}
 .bg-white{
     background-color:#FFF;
 }
-/*TO DO*/
+
+/*Botones*/
+.btn{
+    color:#FFF;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: bold;
+    display: inline-block;
+    width: 100px;
+    border-radius: 3px;
+    box-shadow: 0 1px 4px#cdcdcd;
+    background-image: linear-gradient(to bottom,#999,#CCC);
+    margin: auto 5px;
+}
+.btn-big{
+    padding: 10px inherit;
+    /*padding-top: 10px;
+    padding-bottom: 10px;*/
+}
+.btn-red{
+    background-image: linear-gradient(to bottom,#f74040 80%,#d33535);
+}
 .list-blue{ padding-left: 22px; }
+
+
 /*layout*/
 .wrapper{
     width: 990px;
     margin: 0 auto;/*margen superior e inferior 0 y izquierdo y derecho automaticos*/
     padding: 40px 0;
-
 }
+
+.wrapper:before, .wrapper.after,
+.clearfix:before, .clearfix:after{
+    content: "";
+    display: table;
+}
+.wrapper:after,
+.clearfix:after{
+    clear: both;
+}
+.bg-gray:first-child .wrapper{
+    padding-bottom: 0;
+}
+
+.description{
+    padding-left: 20px;
+}
+
 .col-25{width: 25%}
 .col-50{width: 50%}
 .col-75{width: 75%}
 .fleft{float: left;}/*flotar hacia la izquierda*/
 /* Cabecera*/
 /*Breadcrum en mayusculas*/
-.breadcrum{
-    text-transform: uppercase;
+.fin li{
+    display:inline-block;
+    list-style: none;
 }
+.fin li:after{
+    content: "-";
+}
+.fin li:last-child:after{
+    content: "";
+}
+.breadcrumb li{
+    display: inline-block;
+    text-transform: uppercase;
+    list-style: none;
+    padding: 0;
+}
+.breadcrumb li:after{
+    content: "/";
+}
+.breadcrumb li:last-child:after{
+    content: "";
+}
+.breadcrumb a{
+    margin-right: 5px;
+}
+.marco{
+    background-color:#FFF;
+    padding: 10px;
+    box-shadow: 0 0 5px#cdcdcd;
+}
+img{
+    max-width: 100%;
+}
+ .marco p{
+    margin: 0;
+ }
 
+/* TO DO*/
+/*
+Elementos en linea de breadcrumb
+botones
+tabla
+balines
+pie en linea
+*/
