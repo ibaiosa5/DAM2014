@@ -1,0 +1,11 @@
+@font-face {
+    font-family:'Misery';
+    src: url('../fonts/MiseryLovesCompanyDEMO.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+p { font-size: 2em; margin: 1em; padding: 0 5px;font-family: 'Misery'; }
+p:nth-child(6n+1){
+    text-shadow{0.1em 0.1em 0.2em #f00};
+
+}
