@@ -1,0 +1,41 @@
+#container { width: 500px; height:500px; position: relative;}
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            font-size: 20px;
+            position:absolute;
+            padding: 5px;
+            -webkit-transition: all 3s ease 0.5s;
+        }
+        .box:hover {
+            width: 50px;
+            height: 50px;
+            background-color: blue;
+            color: yellow;
+            font-size: 18px;
+            position:absolute;
+            -webkit-transform:scale(0.5);
+            -webkit-transform:rotate(270deg);
+        }
+        .ex01 .box:hover{
+            -webkit-transform:translatey(150px);
+        }
+
+        .ex01 .box {
+            left: 10px;
+            top: 10px;
+
+        }
+        .ex02 .box {
+            left: 10px;
+            top: 130px;
+        }
+        .ex03 .box {
+            left: 10px;
+            top: 250px;
+        }
+        .ex04 .box {
+            left: 10px;
+            top: 370px;
+        }

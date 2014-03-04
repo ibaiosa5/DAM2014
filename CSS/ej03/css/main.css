@@ -1,0 +1,21 @@
+li:first-child{
+    color:#00F;
+
+}
+li:nth-of-type(2){
+    font-size: 18px;
+}
+li:nth-child(5n+3){
+    font-size: 30px;
+}
+li:nth-last-of-type(2){
+    font-size: 35px;
+}
+li:last-of-type{
+    color:#00F;
+    font-size: 40px;
+}
+li::selection{
+    background-color:#000;
+    color:#0F0;
+}
