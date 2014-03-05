@@ -81,12 +81,18 @@ h1, .h1{
 
 
 /*layout*/
-.wrapper{
-    width: 990px;
-    margin: 0 auto;/*margen superior e inferior 0 y izquierdo y derecho automaticos*/
-    padding: 40px 0;
+.hidden{
+    display: none;
 }
-
+.wrapper{
+    width: 90%;
+    max-width: 990px;
+    margin: 0 auto;/*margen superior e inferior 0 y izquierdo y derecho automaticos*/
+    padding: 4.0404040404% 0;/*40px/990px=4.040404*/
+}
+.read-more{
+    display: none;
+}
 .wrapper:before, .wrapper.after,
 .clearfix:before, .clearfix:after{
     content: "";
@@ -107,7 +113,9 @@ h1, .h1{
 .col-25{width: 25%}
 .col-50{width: 50%}
 .col-75{width: 75%}
+.overflowx{overflow-x: scroll;}
 .fleft{float: left;}/*flotar hacia la izquierda*/
+.fright{float: right;}
 /* Cabecera*/
 /*Breadcrum en mayusculas*/
 .fin li{
@@ -147,6 +155,70 @@ img{
     margin: 0;
  }
 
+@media screen and (max-width: 768px){
+    .wrapper{
+        padding: 2% 0;
+    }
+    .col-25.marco{
+        width: 40%;
+    }
+    .col-75.description{
+        width: 60%;
+    }
+    .description p{
+        height: 250px;
+        overflow: hidden;
+    }
+    .read-more{
+        display: block;
+    }
+    h1{
+        font-size: 1.6em;
+        text-transform: none;
+    }
+    .marco .price{
+        float: none;
+        display: block;
+        text-align: center;
+        margin: 5px 0;
+    }
+    .marco .btn-big{
+        float: none;
+        display: block;
+        width: 100%;
+        margin: 0;
+    }
+    .list li h4{
+        float: none;
+        width: 100%;
+        margin-bottom: 0%;
+    }
+    .list li p{
+        float: none;
+        width: 100%;
+    }
+}
+@media screen and (max-width: 480px){
+    .wrapper{
+        max-width: 480px;
+        width: 100%;
+        padding: 3%;
+    }
+    .breadcrumb{
+        float: left;
+    }
+    .navbar-toogle{
+        display: block;
+        float: right;
+    }
+    .col-25.marco,.col-75.description{
+        width: 100%;
+    }
+    .marco img{
+
+    }
+
+}
 /* TO DO*/
 /*
 Elementos en linea de breadcrumb
