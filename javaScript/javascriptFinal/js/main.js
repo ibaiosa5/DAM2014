@@ -6,5 +6,9 @@ window.$=Element.prototype.$=function(selector){
 
 window.onload = function(){
     var formulario = $("#registro");
-    formulario.validar();
+    var textos=["Rellene el campo",
+                "El password debe tener una longitud mínima de 6 caracteres, y contener al menos una letra minúscula, una letra mayúscula y un dígito.",
+                "Esto no es un email",
+                "El texto introducido en el campo de comentarios no debe exceder los 50 caracteres."];
+    formulario.validar(textos);
 };
