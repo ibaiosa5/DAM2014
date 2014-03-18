@@ -28,7 +28,7 @@ $(function(){ //para que ejecute cuando la pagina este cargada
     var $img = $('img[alt]');
 
     //Seleccionar todas las filas impares del cuerpo de la tabla.
-    var $filas = $('tbody tr:odd').css('background-color', 'gray');
+   // var $filas = $('tbody tr:odd').css('background-color', 'gray');
    // console.log($filas);
 
 

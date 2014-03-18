@@ -10,7 +10,7 @@ var validador=(function(){
         return (/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/.test(valor));
     };
     var minimo = function(valor){
-        return ( valor.length <= 50);
+        return ( valor !== undefined && valor.length <= 50);
     };
 
     return {
