@@ -2,7 +2,7 @@
 
 
 
-    $.fn.validate = function(){
+    $.fn.validate = function(){//añades al prototipo de JQuery la funcion validate
 
 
         return this.filter('form').each(function(){
@@ -14,7 +14,7 @@
                 "minimo" : "El texto introducido en el campo de comentarios no debe exceder los 50 caracteres."};
            // if(!(textos === undefined || textos === null || textos.length === 0))leidos=textos;
 
-            var input = $this.find('input,textarea');
+            var input = $this.find(':input[data-validator]');
 
 
             var requerido = function(valor){
