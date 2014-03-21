@@ -3,6 +3,7 @@ $(function(){
     var textos=[];
     var texto;
     var indice=0;
+    var intervalID;
 
     var intervalManager = function (flag, animate, time) {
        if(flag)
