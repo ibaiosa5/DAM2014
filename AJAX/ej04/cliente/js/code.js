@@ -24,7 +24,6 @@ $(function(){
           $lista.insertAfter($('#comprobar'));
         }
       }
-
     });
   });
 
