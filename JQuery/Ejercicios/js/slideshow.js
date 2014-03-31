@@ -1,4 +1,4 @@
-$(document).ready(function(){
+$(function(){
 
     var onSliderBefore=function($slideElement,oldIndex,newIndex){
         console.log($slideElement,oldIndex,newIndex);

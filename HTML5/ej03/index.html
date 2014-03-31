@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+
+<head>
+  <meta charset="utf-8" />
+  <title>Editor de texto</title>
+    <link rel="stylesheet"  href="css/style.css">
+</head>
+
+<body>
+    <section>
+    <h2>Formulario</h2>
+        <form>
+            <input type="email" placeholder='email' autofocus='true' required='true'>
+            <input type="url" placeholder='dirección' autocomplete='true'>
+            <input type="date"placeholder='data' >
+            <input type="time" placeholder='time' >
+            <input type="datetime" placeholder='datetime' >
+            <input type="month" placeholder='month' >
+            <input type="week" placeholder='week' >
+            <input type="number" placeholder='numero' min=0 max =10 >
+            <input type="range" placeholder='range' >
+            <input type="tel" placeholder='teléfono' >
+            <input type="search" placeholder='busqueda' >
+            <input type="color" placeholder='color' >
+            <input type="text" placeholder='provincias'  list="provincias">
+            <input type='file' placeholder='fichero' multiple>
+            <input type='password' placeholder='password' pattern="">
+            <input type='progress'>
+
+            <datalist id="provincias">
+            <option label="Guipuzcoa" value="Guipuzcoa">
+            <option label="Álava" value="Álava">
+            <option label="Vizcaya" value="Vizcaya">
+            </datalist>
+
+
+        </form>
+
+    </section>
+
+ <script src="../jquery-1.11.0.min.js"></script>
+ <script src="js/code.js"></script>
+</body>
+</html>
