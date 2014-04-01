@@ -2,8 +2,9 @@
 
 <head>
   <meta charset="utf-8" />
-  <title>Editor de texto</title>
+  <title>Formulario</title>
     <link rel="stylesheet"  href="css/style.css">
+    <script src="../lib/vendor/modernizr.custom.65402.js"></script>
 </head>
 
 <body>
@@ -18,19 +19,22 @@
             <input type="month" placeholder='month' >
             <input type="week" placeholder='week' >
             <input type="number" placeholder='numero' min=0 max =10 >
-            <input type="range" placeholder='range' >
+            <input type="range" placeholder='range' min='0' max='10' step='1' value='5'>
             <input type="tel" placeholder='teléfono' >
             <input type="search" placeholder='busqueda' >
             <input type="color" placeholder='color' >
             <input type="text" placeholder='provincias'  list="provincias">
             <input type='file' placeholder='fichero' multiple>
-            <input type='password' placeholder='password' pattern="">
-            <input type='progress'>
+            <input type='password' placeholder='password' required='true' pattern="^[0-9]+.{6,}[A-Z]+$">
+            <progress value="0" max="14"></progress>
+            <meter value="800" min="0" max="1024" high="900">Espacio disco</meter>
+
+            <input type="submit" class='submit' value="Enviar">
 
             <datalist id="provincias">
-            <option label="Guipuzcoa" value="Guipuzcoa">
-            <option label="Álava" value="Álava">
-            <option label="Vizcaya" value="Vizcaya">
+                <option label="Guipuzcoa" value="Guipuzcoa">
+                <option label="Álava" value="Álava">
+                <option label="Vizcaya" value="Vizcaya">
             </datalist>
 
 
@@ -38,7 +42,7 @@
 
     </section>
 
- <script src="../jquery-1.11.0.min.js"></script>
+ <script src="../lib/vendor/jquery-1.11.0.min.js"></script>
  <script src="js/code.js"></script>
 </body>
 </html>
