@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+<head>
+  <meta charset="utf-8" />
+  <title>Datasets</title>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+
+<body>
+    <section>
+        <video>
+            <source src="media/zapaznar.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
+            <source src="media/zapaznar.webm" type='video/webm; codecs="vp8, vorbis"'>
+            <p>Your browser doesn’t support video.
+            Please download the video in<a href="leverage-a-synergy.webm">webM</a>
+            or <a href="leverage-a-synergy.mp4">MP4</a> format. </p>
+        </video>
+    </section>
+    <footer>
+        <input type="button" id="iniciar" value="Iniciar">
+        <input type="button" id="pausar" value="Pausar">
+        <input type="button" id="parar" value="Parar">
+        <input type="button" id="retrocede" value="Retroceder">
+        <input type="button" id="avanzar" value="Avanzar">
+        <input type="button" id="inicio" value="Inicio">
+        <input type="button" id="fin" value="Fin">
+        <input type="button" id="pantallaCompleta" value="Pantalla completa">
+        <input type="range" id="volumen" min=0 max=1 step=0.1 >
+        <progress id="avance" min=0 max=100></progress>
+    </footer>
+
+ <script src="../lib/vendor/jquery-1.11.0.min.js"></script>
+ <script src="js/code.js"></script>
+</body>
+</html>
