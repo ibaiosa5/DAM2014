@@ -92,7 +92,6 @@ $(function(){
         var store = transaction.objectStore('todo-list');
         var cursorRequest = store.openCursor();
         cursorRequest.onsuccess = function(e) {
-            console.log(($('#tagcode')[0].value));
             var result = e.target.result;
             if(!!result == false) {return;}
 
