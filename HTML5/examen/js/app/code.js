@@ -13,9 +13,6 @@ $(function() {
 
     var db = null;
 
-    $('#comenzar').hide();
-    $('#pruebas').hide();
-    $('#respuesta').hide();
 
     var onerror = function (e) {
         console.log(e);
@@ -163,7 +160,10 @@ $(function() {
             $('#respuesta').show();
             $('#respuesta h2').html('Respuesta incorrecta');
         }
+    };
 
+    var mostrarMapa = function(){
+        console.log('as');
     };
 
     open();
@@ -172,6 +172,6 @@ $(function() {
     $(document).on('click','#comenzar',mostrarPruebas);
     $(document).on('click','#responder',verificarRespuesta);
     $(document).on('click','#siguientePrueba',verificarRespuesta);
-
+    $(document).on('click','#verMapa',mostrarMapa);
 
 });
