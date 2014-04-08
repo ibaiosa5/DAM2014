@@ -162,11 +162,14 @@ $(function() {
 
         var prueba = JSON.parse(sessionStorage.getItem('prueba'));
 
-        if (navigator.geolocation) {
+        if (Modernizr.geolocation) {
+
             navigator.geolocation.watchPosition(showMap,error, {
                 enableHighAccuracy: true,
                 timeout: 500000,
             });
+        }else {
+            $('#mapa').append('No te podemos localizar');
         }
 
         function showMap(position) {
