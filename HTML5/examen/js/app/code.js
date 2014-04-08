@@ -14,6 +14,8 @@ $(function() {
     var db = null;
 
     $('#comenzar').hide();
+    $('#pruebas').hide();
+    $('#respuesta').hide();
 
     var onerror = function (e) {
         console.log(e);
@@ -120,19 +122,56 @@ $(function() {
         cursorRequest.onsuccess = function(e) {
             var result = e.target.result;
             if(!!result == false) return;
-            $('#programa').hide();
-            $('#concursante').hide();
-            result.continue();
+            var pruebas=result.value.players[0].challenges;
+            $('#pruebas').show();
+            mostraPrueba(pruebas[0]);
         };
     };
 
+    var mostraPrueba =function(prueba){
+        $('#programa').hide();
+        $('#concursante').hide();
+        sessionStorage.setItem('prueba', JSON.stringify(prueba) );
 
+        $('#opcion1 aside').append($('<p>Nombre: '+prueba.option1.name+' Likes: '+prueba.option1.likes+' Precio: '+prueba.option1.price+'</p>'));
+        $('#opcion2 aside').append($('<p>Nombre: '+prueba.option2.name+' Likes: '+prueba.option2.likes+' Precio: '+prueba.option2.price+'</p>'));
 
+        var img1 = $('<img/>', {
+                src : prueba.option1.photo
+            });
+        var img2 = $('<img/>', {
+                src : prueba.option2.photo
+            });
+        $('#opcion1').append(img1);
+        $('#opcion2').append(img2);
+    };
+
+    var verificarRespuesta = function(){
+        var prueba = JSON.parse(sessionStorage.getItem('prueba'));
+        if(prueba.selected=='option1'&&($('#opcion1 input').is(':checked'))){
+            $('#pruebas').hide();
+            $('#respuesta').show();
+            $('#respuesta h2').html('Respuesta correcta');
+        }
+        else if(prueba.selected=='option2'&&($('#opcion2 input').is(':checked'))){
+            $('#pruebas').hide();
+            $('#respuesta').show();
+            $('#respuesta h2').html('Respuesta correcta');
+        }
+        else{
+            $('#pruebas').hide();
+            $('#respuesta').show();
+            $('#respuesta h2').html('Respuesta incorrecta');
+        }
+
+    };
 
     open();
 
     $(document).on('click','#verPrograma',mostrarPrograma);
     $(document).on('click','#comenzar',mostrarPruebas);
+    $(document).on('click','#responder',verificarRespuesta);
+    $(document).on('click','#siguientePrueba',verificarRespuesta);
 
 
 });
