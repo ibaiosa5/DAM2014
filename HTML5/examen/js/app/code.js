@@ -44,7 +44,7 @@ $(function() {
     };
 
     var open =function  () {
-        var version = 2;
+        var version = 5;
         var request = indexedDB.open("tvdb", version);
 
         request.onupgradeneeded = function(e) {
@@ -53,18 +53,6 @@ $(function() {
                     db.deleteObjectStore("programas");
 
             db.createObjectStore("programas",
-                        { keyPath: "id" });
-
-            if(db.objectStoreNames.contains("concursantes"))
-                    db.deleteObjectStore("concursantes");
-
-            db.createObjectStore("concursantes",
-                        { keyPath: "id" });
-
-            if(db.objectStoreNames.contains("pruebas"))
-                    db.deleteObjectStore("pruebas");
-
-            db.createObjectStore("pruebas",
                         { keyPath: "id" });
         };
 
@@ -121,6 +109,7 @@ $(function() {
             if(!!result == false) return;
             var pruebas=result.value.players[0].challenges;
             $('#pruebas').show();
+
             mostraPrueba(pruebas[0]);
         };
     };
@@ -141,6 +130,7 @@ $(function() {
             });
         $('#opcion1').append(img1);
         $('#opcion2').append(img2);
+
     };
 
     var verificarRespuesta = function(){
@@ -162,16 +152,68 @@ $(function() {
         }
     };
 
-    var mostrarMapa = function(){
-        console.log('as');
+
+
+    var error = function(position){
+          console.warn('ERROR(' + err.code + '): ' + err.message);
     };
+
+    var mostrarMapa = function(){
+
+        var prueba = JSON.parse(sessionStorage.getItem('prueba'));
+
+        if (navigator.geolocation) {
+            navigator.geolocation.watchPosition(showMap,error, {
+                enableHighAccuracy: true,
+                timeout: 500000,
+            });
+        }
+
+        function showMap(position) {
+            var mapcanvas = document.createElement('div');
+            mapcanvas.id = 'mapcanvas';
+            mapcanvas.style.height = '400px';
+            mapcanvas.style.width = '560px';
+
+            $('#mapa').append(mapcanvas);
+
+            var pos2 = new google.maps.LatLng(prueba.place.latitude,prueba.place.longitude);
+
+            var pos1 = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+
+
+            var myOptions = {
+                zoom: 2,
+                center: pos1,
+                mapTypeControl: false,
+                navigationControlOptions: {style: google.maps.NavigationControlStyle.SMALL},
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+            var map = new google.maps.Map(document.getElementById("mapcanvas"), myOptions);
+
+            var marker = new google.maps.Marker({
+                position: pos1,
+                map: map,
+                title: "¡Usted está aquí!"
+            });
+
+            var marker = new google.maps.Marker({
+                position: pos2,
+                map: map,
+                title: "La tienda está aquí!"
+            });
+        }
+    };
+
+
+
 
     open();
 
     $(document).on('click','#verPrograma',mostrarPrograma);
     $(document).on('click','#comenzar',mostrarPruebas);
     $(document).on('click','#responder',verificarRespuesta);
-    $(document).on('click','#siguientePrueba',verificarRespuesta);
+    $(document).on('click','#siguientePrueba',mostrarPruebas);
     $(document).on('click','#verMapa',mostrarMapa);
 
 });
