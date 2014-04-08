@@ -110,11 +110,11 @@ $(function() {
             var pruebas=result.value.players[0].challenges;
             $('#pruebas').show();
 
-            mostraPrueba(pruebas[0]);
+            mostrarPrueba(pruebas[0]);
         };
     };
 
-    var mostraPrueba =function(prueba){
+    var mostrarPrueba =function(prueba){
         $('#programa').hide();
         $('#concursante').hide();
         sessionStorage.setItem('prueba', JSON.stringify(prueba) );
@@ -207,9 +207,6 @@ $(function() {
             });
         }
     };
-
-
-
 
     open();
 
