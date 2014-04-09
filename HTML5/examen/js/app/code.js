@@ -130,7 +130,6 @@ $(function() {
             });
         $('#opcion1').append(img1);
         $('#opcion2').append(img2);
-
     };
 
     var verificarRespuesta = function(){

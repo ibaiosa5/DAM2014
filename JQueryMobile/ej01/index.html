@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Page Title</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css" />
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
+</head>
+<body>
+
+<!-- Start of first page -->
+<div data-role="page" id="page1" data-title='1' data-transition="pop">
+
+    <div data-role="header">
+        <h1>Page 1</h1>
+        <a href="index.html" data-icon="gear" class="ui-btn-right">Options</a>
+    </div><!-- /header -->
+
+    <div role="main" class="ui-content">
+        <a href="#page2">Cambiar página</a></p>
+        <p><a href="externo.html" data-ajax="false">Documento externo</a></p>
+
+        <div class="ui-grid-a">
+            <div class="ui-block-a">Block A</div>
+            <div class="ui-block-b">Block B</div>
+            <div class="ui-block-a">Block A</div>
+            <div class="ui-block-b">Block B</div>
+            <div class="ui-block-a">Block A</div>
+            <div class="ui-block-b">Block B</div>
+        </div>
+
+        <div class="ui-grid-b">
+            <div class="ui-block-a">Block A</div>
+            <div class="ui-block-b">Block B</div>
+            <div class="ui-block-c">Block C</div>
+        </div>
+
+    </div><!-- /content -->
+
+    <div data-role="footer">
+        <h4>Page Footer</h4>
+    </div><!-- /footer -->
+</div><!-- /page -->
+
+<!-- Start of second page -->
+<div data-role="page" id="page2" data-title='2' data-transition="slide">
+
+    <div data-role="header">
+        <h1>Page 2</h1>
+    </div><!-- /header -->
+
+    <div role="main" class="ui-content">
+        <p><a href="#page1">Cambiar página</a></p>
+        <p><a href="#popupBasic" data-rel="popup">Open Popup</a></p>
+        <p><a href="#panel">Open Panel</a></p>
+        <p><a href="previous.html" data-rel="back" data-direction='reverse'>Back</a></p>
+    </div><!-- /content -->
+
+    <div data-role="popup" id="popupBasic" data-transition='pop'>
+            <p>This is a completely basic popup, no options set.<p>
+    </div>
+
+    <div data-role="panel" id="panel" data-position="left" data-transition='slide'>
+        <div data-role="navbar" data-type="vertical">
+            <ul>
+                <li><a href="#" data-icon="check"></a></li>
+                <li><a href="#" data-icon="info"></a></li>
+                <li><a href="#" data-icon="back" data-rel="close" data-direction='reverse'></a></li>
+            </ul>
+        </div><!-- /navbar -->
+    </div><!-- /panel -->
+
+    <div data-role="footer">
+        <h4>Page Footer</h4>
+    </div><!-- /footer -->
+</div><!-- /page -->
+
+
+
+
+
+</body>
+</html>
