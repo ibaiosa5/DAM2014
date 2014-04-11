@@ -4,8 +4,8 @@ $(function () {
     // Obtener los elementos del DOM
     var status=$('#status')[0];
     var input=$('#input')[0];
-    var boton=$('#enviar')[0];
-    var content=$('#content')[0];
+    var boton=$('#enviar');
+    var content=$('#content');
 
     // Mi color asignado por el servidor
     var myColor = false;
@@ -59,15 +59,8 @@ $(function () {
             var historial =[];
             $.each( data.data, function( ind, el ){
                 var date = new Date(el.time);
-                var hours = date.getHours();
-                var minutes = date.getMinutes();
-                var hora =($('<span>'+hours+':'+minutes+'</span>')).css('text-align','right');
-                var msg = ($('<p>'+el.author+': '+el.text+' </p>')).css('color',el.color).append(hora);
-
-
-                historial.unshift(msg);//lo mismo que push pero el ultimo lo coloca primero
+                addMessage(el.author,el.text,el.color,date);
             });
-            $(content).prepend(historial);
         }
 
         if(data.type=='color'){
@@ -79,10 +72,7 @@ $(function () {
         if(data.type=='message'){
 
             var date = new Date(data.data.time);
-            var hours = date.getHours();
-            var minutes = date.getMinutes();
-            var msg = ($('<p>'+data.data.author+': '+data.data.text+' '+hours+':'+minutes+'</p>')).css('color',data.data.color);
-            $(content).prepend(msg);
+            addMessage(data.data.author,data.data.text,data.data.color,date);
         }
 
 
@@ -91,18 +81,20 @@ $(function () {
     var solicitarNick = function(){
         $(status).text('Introduce tu nick:');
         $(input).attr('disabled',false);
-        $(boton).attr('disabled',false);
+        boton.attr('disabled',false);
     };
 
     /**
      * Añadir el mensaje a la ventana de chat
      */
+
     function addMessage(author, message, color, dt) {
         content.prepend('<p><span style="color:' + color + '">' + author + '</span> @ ' +
              + (dt.getHours() < 10 ? '0' + dt.getHours() : dt.getHours()) + ':'
              + (dt.getMinutes() < 10 ? '0' + dt.getMinutes() : dt.getMinutes())
              + ': ' + message + '</p>');
     }
+
     $(document).on('click','#enviar',function(){
         if(first){
             myName=$(input).val();
