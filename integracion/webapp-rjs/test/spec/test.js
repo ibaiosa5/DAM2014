@@ -1,11 +1,11 @@
 /* global describe, it */
-require.config({
-    baseUrl: '../app/scripts',
-    nodeRequire:require
-});
-
 (function () {
     'use strict';
+
+    require.config({
+        baseUrl: '../app/scripts',
+        nodeRequire:require
+    });
 
     describe('test', function () {
         var mod;
@@ -18,16 +18,19 @@ require.config({
 
         describe('Test methods', function(){
             it('Should return 1', function(){
-                assert.typeOf(mod.testNumber(1),'number');
-                assert.typeOf(mod.testNumber(5),'string');
-
                 assert.equal(1,mod.testNumber(1));
-                assert.equal('fizz',mod.testNumber(3));
-                assert.equal('buzz',mod.testNumber(5));
-                assert.equal('fizzbuzz',mod.testNumber(15));
-                assert.equal(22,mod.testNumber(22));
-                assert.equal('fizzbuzz',mod.testNumber(30));
             });
+            it('Should return nothing', function(){
+                assert.equal('',mod.testNumber());
+                assert.equal('',mod.testNumber(undefined));
+                assert.equal('',mod.testNumber(null));
+            });
+            it('Should return the list fizz buzz', function(){
+                assert.equal('1,2,fizz',mod.testNumber(3));
+                assert.equal('1,2,fizz,4,buzz',mod.testNumber(5));
+                assert.equal('1,2,fizz,4,buzz,fizz,7,8,fizz,buzz,11,fizz,13,14,fizzbuzz',mod.testNumber(15));
+            });
+
         });
     });
 })();

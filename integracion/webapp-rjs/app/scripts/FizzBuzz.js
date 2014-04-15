@@ -1,20 +1,26 @@
-define('FizzBuzz',[],function(){
+// APP.FizzBuzz = (function(){})() igual a
+define('FizzBuzz',['Fizz','Buzz'],function(Fizz, Buzz){
     'use strict';
 
     var testNumber = function(number){
+        var list=[];
+        for(var i=1;i<=number;i++){
 
-        if(number%15===0){
-            console.log('fizzbuzz');
-            return 'fizzbuzz';
+            if(Fizz.comprobar(i)&&Buzz.comprobar(i)){
+                list.push(Fizz.valor+Buzz.valor);
+            }
+            else if(Buzz.comprobar(i)){
+                list.push(Buzz.valor);
+            }
+            else if(Fizz.comprobar(i)){
+                list.push(Fizz.valor);
+            }
+            else {
+                list.push(i);
+            }
         }
-        else if(number%5===0){
-            return 'buzz';
-        }
-        else if(number%3===0){
-            console.log('fizz');
-            return 'fizz';
-        }
-        return number;
+        console.log(list);
+        return list;
     };
 
     return {
