@@ -1,4 +1,5 @@
 define('Data', ['pouchdb'], function(PouchDB) {
+    'use strict';
     console.log('Data module started');
 
     var dbName = 'TwitterDB';

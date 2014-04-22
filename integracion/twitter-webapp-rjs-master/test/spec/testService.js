@@ -29,9 +29,10 @@
         });
 
         afterEach(function(done){
-            $.ajax.restore();
+            $.ajax.restore(); //dejar de espiar y volver al funcionamiento normal
             done();
         });
+
         describe('#getTweets', function () {
             it('$.ajax has been called', function (done) {
                 srv.getTweets();
