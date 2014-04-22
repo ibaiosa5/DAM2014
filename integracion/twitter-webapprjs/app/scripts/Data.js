@@ -1,45 +1,65 @@
-define('Data',['ydn-db'], function(ydn) {
-    'use strict';
+define('Data', ['ydn-db'], function(ydn) {
+    console.log('Data module started');
 
-    var db = new ydn.db.Storage('tweeterdb');
-    var tweetStore = 'tweetStore';
+    var dbName = 'TwitterDB',
+        keyPath = 'id',
+        tweetTable = 'twitter',
+        db = new ydn.db.Storage(dbName);
 
-    var addTweet = function(tweet,success,error){
-        var req = db.put({name:tweetStore,keyPath:'id'}, tweet);
+    var addTweet = function(tweet, success, error) {
+        var req = db.add({name: tweetTable, keyPath: keyPath}, tweet);
         req.done(success);
         req.fail(error);
     };
 
-    var getTweet = function(idtweet,success,error){
-        var req = db.get(tweetStore,idtweet);
+    var addTweets = function(tweets, success, error) {
+        var req = db.add({name: tweetTable, keyPath: keyPath}, tweets);
         req.done(success);
         req.fail(error);
     };
 
-    var getAllTweets = function(success,error){
-        var req = db.values(tweetStore);
+    var getTweet = function(id, success, error) {
+        var req = db.get(tweetTable, id);
         req.done(success);
         req.fail(error);
     };
 
-    var removeTweet = function(idtweet,success,error){
-        var req = db.remove(tweetStore,idtweet);
+    var updateTweet = function(tweet, success, error) {
+        getTweet(tweet.id, function(t){
+            if(t) {
+                var req = db.put({name: tweetTable, keyPath: keyPath}, tweet);
+                req.done(success);
+                req.fail(error);
+            } else {
+                error('There is no tweet with id ' + tweet.id);
+            }
+        }, error);
+    };
+
+    var removeTweet = function(id, success, error){
+        getTweet(id, function(tweet) {
+            if(tweet) {
+                var req = db.remove(tweetTable, id);
+                req.done(success);
+                req.fail(error);
+            } else {
+                error('There is no tweet with id ' + id);
+            }
+        });
+    };
+
+    var clear = function(success, error){
+        var req = db.clear(tweetTable);
         req.done(success);
         req.fail(error);
     };
 
-    var updateTweet = function(tweet,success,error){
-        var req = db.put({name:tweetStore,keyPath:'id'}, tweet);
-        req.done(success);
-        req.fail(error);
-    };
-
-    return{
+    return {
         addTweet : addTweet,
+        addTweets : addTweets,
+        getTweet : getTweet,
         updateTweet : updateTweet,
         removeTweet : removeTweet,
-        getTweet : getTweet,
-        getAllTweets : getAllTweets
+        clear : clear
     };
-
 });

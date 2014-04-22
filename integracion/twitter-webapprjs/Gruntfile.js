@@ -1,4 +1,4 @@
-// Generated on 2014-04-16 using generator-webapp-rjs 0.4.8
+// Generated on 2014-04-14 using generator-webapp-rjs 0.4.8
 'use strict';
 
 // # Globbing

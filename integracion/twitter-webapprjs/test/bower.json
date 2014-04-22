@@ -1,9 +1,10 @@
 {
-  "name": "twitter-webapprjs",
+  "name": "twitter-webapp",
   "private": true,
   "dependencies": {
-    "chai": "~1.8.0",
-    "mocha": "~1.14.0"
+    "chai": "~1.9.1",
+    "mocha": "~1.18.2",
+    "sinon": "~1.9.1"
   },
   "devDependencies": {}
 }

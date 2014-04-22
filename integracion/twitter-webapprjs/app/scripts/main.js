@@ -1,7 +1,8 @@
 require.config({
     paths: {
         jquery: '../bower_components/jquery/dist/jquery',
-        'ydn-db': '../bower_components/ydn-db/jsc/ydn.db-dev', //Se añade la libreria de ydn-db
+        pouchdb: '../bower_components/pouchdb/dist/pouchdb-nightly',
+        'ydn-db': '../bower_components/ydn-db/jsc/ydn.db-dev',
         bootstrapAffix: '../bower_components/bootstrap/js/affix',
         bootstrapAlert: '../bower_components/bootstrap/js/alert',
         bootstrapButton: '../bower_components/bootstrap/js/button',
@@ -14,8 +15,11 @@ require.config({
         bootstrapTab: '../bower_components/bootstrap/js/tab',
         bootstrapTooltip: '../bower_components/bootstrap/js/tooltip',
         bootstrapTransition: '../bower_components/bootstrap/js/transition'
-},
+    },
     shim: {
+        pouchdb: {
+            exports : 'PouchDB'
+        },
         'ydn-db': {
             exports : 'ydn'
         },
@@ -58,9 +62,4 @@ require.config({
     }
 });
 
-require(['app', 'jquery'], function (app, $) {
-    'use strict';
-    // use app here
-    console.log(app);
-    console.log('Running jQuery %s', $().jquery);
-});
+require(['app'], function () {});
