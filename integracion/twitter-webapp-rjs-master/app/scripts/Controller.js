@@ -1,14 +1,21 @@
-define('Controller',['Data','Service'],function(DB,srv){
+define('Controller',['Data','Service','UI'],function(DB,srv,UI){
     'use strict';
 
-    var getTweetsFromTwitter = function(){
-        srv.getTweets({},processTweets,error);
+    console.log('Controller module started');
+
+    var getTweetsFromTwitter = function(success,error){
+        srv.getTweets({},function(tweets){
+                processTweets(tweets,
+                    function(tweets){
+                        DB.addTweets(tweets,success,error);
+                        UI.showTweetsList(tweets);
+                    },error);
+            },error);
     };
 
-    var processTweets = function(data){
+    var processTweets = function(data,success,error){
         var tweets =[];
         if(data && data.statuses && data.statuses.length >0){
-
             for (var i = data.statuses.length - 1; i >= 0; i--) {
                 var tweet ={
                     id : data.statuses[i].id_str,
@@ -19,18 +26,10 @@ define('Controller',['Data','Service'],function(DB,srv){
                     photo : data.statuses[i].user.profile_image_url,
                 };
                 tweets.push(tweet);
-                DB.addTweets(tweet,success,error);
             }
+            success(tweets);
         }
 
-    };
-
-    var success =function(){
-        console.log('se ha añadido'+tweet);
-    };
-
-    var error = function(){
-        console.log('error');
     };
 
     return{

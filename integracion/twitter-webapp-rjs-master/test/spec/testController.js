@@ -39,10 +39,14 @@
 
         describe('#getTweetsFromTwitter', function () {
             it('Get all tweets from twitter and save to DB', function (done) {
-                ctrl.getTweetsFromTwitter();
+                ctrl.getTweetsFromTwitter(function(data){
+                    assert.isTrue(DB.addTweets.calledOnce,'addTweets no llamado');
+                    done();
+                }
+                ,function(err){
+                    throw err;
+                });
                 assert.isTrue(srv.getTweets.calledOnce,'getTweets no llamado');
-                assert.isTrue(DB.addTweets.calledOnce,'addTweets no llamado');
-                done();
             });
         });
     });
