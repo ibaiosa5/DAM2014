@@ -2,6 +2,11 @@ define('Data', ['ydn-db'], function(ydn) {
     'use strict';
     console.log('Data module started');
 
+    var throwEvent = function(){
+        var event = new Event('datachange');
+        document.dispatchEvent(event);
+    };
+
     var dbName = 'TwitterDB',
         keyPath = 'id',
         tweetTable = 'twitter',
@@ -9,25 +14,38 @@ define('Data', ['ydn-db'], function(ydn) {
 
     var addTweet = function(tweet, success, error) {
         var req = db.add({name: tweetTable, keyPath: keyPath}, tweet);
-        req.done(success);
+        req.done(function(){
+            throwEvent();
+            success();
+        });
         req.fail(error);
+
     };
 
     var addTweets = function(tweets, success, error) {
         var req = db.add({name: tweetTable, keyPath: keyPath}, tweets);
-        req.done(success);
+        req.done(function(keys){
+            throwEvent();
+            success(keys);
+        });
         req.fail(error);
     };
 
     var getTweet = function(id, success, error) {
         var req = db.get(tweetTable, id);
-        req.done(success);
+        req.done(function(keys){
+            throwEvent();
+            success(keys);
+        });
         req.fail(error);
     };
 
     var getTweets = function(success, error) {
         var req = db.values(tweetTable);
-        req.done(success);
+        req.done(function(keys){
+            throwEvent();
+            success(keys);
+        });
         req.fail(error);
     };
 
@@ -35,7 +53,10 @@ define('Data', ['ydn-db'], function(ydn) {
         getTweet(tweet.id, function(t){
             if(t) {
                 var req = db.put({name: tweetTable, keyPath: keyPath}, tweet);
-                req.done(success);
+                req.done(function(keys){
+                    throwEvent();
+                    success(keys);
+                });
                 req.fail(error);
             } else {
                 error('There is no tweet with id ' + tweet.id);
@@ -47,7 +68,10 @@ define('Data', ['ydn-db'], function(ydn) {
         getTweet(id, function(tweet) {
             if(tweet) {
                 var req = db.remove(tweetTable, id);
-                req.done(success);
+                req.done(function(keys){
+                    throwEvent();
+                    success(keys);
+                });
                 req.fail(error);
             } else {
                 error('There is no tweet with id ' + id);
@@ -57,7 +81,10 @@ define('Data', ['ydn-db'], function(ydn) {
 
     var clear = function(success, error){
         var req = db.clear(tweetTable);
-        req.done(success);
+        req.done(function(keys){
+            throwEvent();
+            success(keys);
+        });
         req.fail(error);
     };
 

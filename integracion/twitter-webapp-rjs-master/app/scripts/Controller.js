@@ -8,7 +8,6 @@ define('Controller',['Data','Service','UI'],function(DB,srv,UI){
                 processTweets(tweets,
                     function(tweets){
                         DB.addTweets(tweets,success,error);
-                        UI.showTweetsList(tweets);
                     },error);
             },error);
     };
@@ -32,7 +31,14 @@ define('Controller',['Data','Service','UI'],function(DB,srv,UI){
 
     };
 
+    var showLatestTweets = function(){
+        DB.getTweets(function(tweets){
+            UI.showTweetsList(tweets);
+        });
+    };
+
     return{
-        getTweetsFromTwitter : getTweetsFromTwitter
+        getTweetsFromTwitter : getTweetsFromTwitter,
+        showLatestTweets : showLatestTweets
     };
 });
