@@ -1,4 +1,4 @@
-define('UI',['jquery', 'handlebars'],function($,Handlebars){
+define('UI',['quo', 'handlebars'],function($,Handlebars){
     'use strict';
 
     console.log('UI module started');

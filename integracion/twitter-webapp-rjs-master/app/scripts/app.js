@@ -1,4 +1,9 @@
-define([], function() {
+define(['Controller'], function(Controller) {
     'use strict';
-  console.log('App started');
+
+    console.log('App started');
+
+    Controller.getTweetsFromTwitter();
+    Controller.showLatestTweets();
+
 });

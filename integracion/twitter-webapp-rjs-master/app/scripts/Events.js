@@ -1,4 +1,4 @@
-define('Events.js',['jquery','Controller'],function($,ctrl){
+define('Events.js',['quo','Controller'],function($,ctrl){
     'use strict';
 
     console.log('Events module started');
